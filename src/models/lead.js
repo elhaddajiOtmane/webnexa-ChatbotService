@@ -5,6 +5,7 @@ const leadSchema = new mongoose.Schema({
   email: { type: String, required: true },
   phone: String,
   service: { type: String, required: true },
+  preferredContactMethod: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 
