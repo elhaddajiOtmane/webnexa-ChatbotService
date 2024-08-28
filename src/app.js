@@ -1,8 +1,8 @@
-// File: src/app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const leadRoutes = require('./routes/leadRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 dotenv.config();
 
@@ -25,6 +25,7 @@ mongoose.connect(DATABASE_URI, {
 
 // Routes
 app.use('/api/leads', leadRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 0; // Use 0 to let the OS assign an available port
 const server = app.listen(PORT, () => {
