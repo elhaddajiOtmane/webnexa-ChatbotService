@@ -1,8 +1,8 @@
-// File: src/app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const leadRoutes = require('./routes/leadRoutes');
+const healthRoutes = require('./routes/healthRoutes'); // Import the new health routes
 
 dotenv.config();
 
@@ -25,8 +25,9 @@ mongoose.connect(DATABASE_URI, {
 
 // Routes
 app.use('/api/leads', leadRoutes);
+app.use('/api/health', healthRoutes); // Add the new health route to the app with the path `/health`
 
-const PORT = process.env.PORT || 0; // Use 0 to let the OS assign an available port
+const PORT = process.env.PORT || 3000; // Use 0 to let the OS assign an available port
 const server = app.listen(PORT, () => {
   const actualPort = server.address().port;
   console.log(`Server running on port ${actualPort}`);
