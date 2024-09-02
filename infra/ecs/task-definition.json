@@ -1,0 +1,32 @@
+{
+    "family": "webnexa-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::992382847560:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "name": "webnexa-container",
+        "image": "992382847560.dkr.ecr.eu-central-1.amazonaws.com/webnexa-chatbotservice:latest",
+        "portMappings": [
+          {
+            "containerPort": 3000,
+            "hostPort": 3000,
+            "protocol": "tcp"
+          }
+        ],
+        "environment": [
+          {
+            "name": "DATABASE_URI",
+            "value": "mongodb+srv://otmane:V5Xt5aXx8N2LhgSi@cluster.nixwg.mongodb.net/formleads?retryWrites=true&w=majority&appName=Cluster"
+          },
+          {
+            "name": "PORT",
+            "value": "3000"
+          }
+        ]
+      }
+    ]
+  }
+  
